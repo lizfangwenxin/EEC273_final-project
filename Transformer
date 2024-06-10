@@ -134,7 +134,6 @@ def process_file(filepath, base_output_dir, sequence_length=10, num_epochs=10, b
         test_dataset = NetworkTrafficDataset(test_data, sequence_length)
         test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False)  # Use batch_size=1 for sequential prediction
 
-        # 確保有足夠的測試數據
         if len(test_dataset) == 0:
             print(f"Not enough test data for GridID: {grid_id}")
             continue
@@ -180,7 +179,7 @@ def process_file(filepath, base_output_dir, sequence_length=10, num_epochs=10, b
         plt.title(f"GridID: {grid_id}\nTest MSE: {test_mse:.4f}")
         plt.xlabel('Time')
         plt.ylabel('Internet Usage')
-        plt.xticks(rotation=90)  # 旋轉 x 軸標籤
+        plt.xticks(rotation=90) 
         plt.savefig(os.path.join(file_output_dir, f"GridID_{grid_id}.png"))
         plt.close()
 
